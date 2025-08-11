@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Kepuasan Masyarakat UPT Cimahi Techno Park</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .filters {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .filters label {
+            font-weight: bold;
+        }
+
+        #surveyChart {
+            margin-top: 20px;
+        }
+
+        .filters select {
+            max-width: 300px;
+            /* Atur lebar sesuai kebutuhan */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Tooltip untuk menampilkan teks lengkap saat di-hover */
+        .filters option:hover {
+            overflow: visible;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Survey Kepuasan Masyarakat UPT Cimahi Techno Park</h1>
+
+        <!-- Data filters -->
+        <div class="filters">
+            <label for="filter-category">Pilih Pertanyaan:</label>
+            <select id="filter-category">
+                <option value="">Loading...</option>
+            </select>
+        </div>
+
+        <!-- Chart to display data -->
+        <canvas id="surveyChart" width="400" height="200"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Fetch data from the server
+        async function fetchSurveyData() {
+            const response = await fetch('http://localhost:5000/getStatistik');
+            const data = await response.json();
+            return data;
+        }
+
+        // Initialize chart
+        const ctx = document.getElementById('surveyChart').getContext('2d');
+        let surveyChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Sangat Sesuai', 'Sesuai', 'Kurang Sesuai'],
+                datasets: [
+                    {
+                        label: 'Sangat Sesuai',
+                        data: [],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Sesuai',
+                        data: [],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Kurang Sesuai',
+                        data: [],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Update chart with selected question data
+        function updateChart(data) {
+            surveyChart.data.datasets[0].data = [data.sangat_sesuai, 0, 0];
+            surveyChart.data.datasets[1].data = [0, data.sesuai, 0];
+            surveyChart.data.datasets[2].data = [0, 0, data.kurang_sesuai];
+            surveyChart.update();
+        }
+
+        // Populate question dropdown and set up chart update on selection
+        async function init() {
+            const surveyData = await fetchSurveyData();
+            const filterCategory = document.getElementById('filter-category');
+            filterCategory.innerHTML = surveyData.map((question, index) => `<option value="${index}">${question.pertanyaan}</option>`).join('');
+
+            // Update chart with the first question data by default
+            if (surveyData.length > 0) {
+                updateChart(surveyData[0]);
+            }
+
+            // Listen for dropdown change
+            filterCategory.addEventListener('change', function () {
+                const selectedIndex = this.value;
+                if (selectedIndex !== "") {
+                    updateChart(surveyData[selectedIndex]);
+                }
+            });
+        }
+
+        init();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,431 @@
+/* Global reset dan font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    display: flex;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 110px;
+    height: 100vh;
+    padding: 0 1.7rem;
+    color: #fff;
+    overflow: hidden; /* pastikan overflow hidden */
+    transition: all 0.5s ease;
+    background: rgba(113, 99, 186, 255);
+  }
+  
+  .sidebar:hover {
+    width: 240px;
+    transition: width 0.5s ease;
+  }
+  
+  .logo {
+    height: 80px;
+    padding: 16px;
+  }
+  
+  .menu {
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu li {
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .menu li:hover,
+  .active {
+    background: #e0e0e058;
+  }
+  
+  .menu a {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .menu a span {
+    overflow: hidden;
+  }
+  
+  .menu a i {
+    font-size: 1.2rem;
+  }
+  
+  .logout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+/* Main content styling */
+.main--content {
+    width: 100%;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.header--wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 10px;
+
+}
+
+.header--title {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(113, 99, 186, 255);
+
+}
+.header--title h2 {
+    color: rgba(113, 99, 186, 255);
+  }
+
+.search-box input {
+    padding: 10px;
+    width: 250px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Button styling */
+.tab-wrapper {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.status-button {
+    padding: 10px 20px;
+    background-color: #715eb6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.status-button.pending {
+    background-color: #d9534f;
+}
+.status-button.pending:hover {
+    background-color: #c9302c;
+}
+.status-button.waiting {
+    background-color: #f0ad4e;
+}
+
+.status-button.completed {
+    background-color: #5cb85c;
+}
+
+.status-button:hover {
+    background-color: #4e3b9c;
+    transform: translateY(-2px);
+}
+
+.status-button.waiting:hover {
+    background-color: #ec971f;
+}
+
+.status-button.completed:hover {
+    background-color: #449d44;
+}
+
+/* Tabel styling */
+.table-container {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+
+thead {
+    background-color: #715eb6;
+    color: white;
+    text-transform: uppercase;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+td button {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+td button:hover {
+    background-color: #45a049;
+}
+
+/* Tambahkan margin untuk grafik */
+.chart-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Visitor Cards Styling */
+.latest-visitors {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+.latest-visitors h3 {
+    margin-bottom: 20px;
+}
+
+.visitor-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.visitor-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.visitor-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.visitor-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.visitor-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+}
+
+.visitor-keperluan {
+    font-size: 12px;
+    color: #777;
+}
+
+.visitor-badge {
+    display: inline-block;
+    background-color: #e0f7fa;
+    color: #00acc1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.visitor-time {
+    color: #777;
+    font-size: 12px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px;
+    }
+
+    .search-box input {
+        width: 180px;
+    }
+
+    .tab-wrapper button {
+        padding: 8px 16px;
+    }
+
+    .visitor-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .visitor-info {
+        gap: 10px;
+    }
+
+    .visitor-photo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .visitor-details {
+        font-size: 12px;
+    }
+
+    table, th, td {
+        font-size: 12px;
+    }
+
+    td button {
+        padding: 4px 8px;
+    }
+
+    .main--content {
+        padding: 15px;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 80px; /* Adjust sidebar for smaller screens */
+    }
+
+    .menu li {
+        font-size: 12px; /* Reduce menu text size */
+    }
+
+    .main--content {
+        padding: 15px;
+    }
+
+    table, th, td {
+        font-size: 12px; /* Reduce table font size */
+    }
+
+    td button {
+        padding: 4px 8px; /* Reduce button size */
+    }
+
+    .header--wrapper {
+        flex-direction: column; /* Stack header elements vertically */
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Hide sidebar on very small devices */
+    }
+
+    .main--content {
+        padding: 10px;
+        margin: 0 10px;
+    }
+
+    table, th, td {
+        font-size: 10px; /* Reduce table font size further */
+    }
+
+    .header--wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Ensure table scrolls horizontally on smaller screens */
+    .table-container {
+        overflow-x: auto; /* Allow horizontal scroll */
+    }
+
+    table {
+        width: 100%; /* Ensure the table occupies full width */
+        display: block; /* Force table to behave like a block element */
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    td {
+        word-wrap: break-word; /* Break long words */
+    }
+}
+
+@media (max-width: 480px) {
+    .header--wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    table, th, td {
+        font-size: 8px; /* Reduce table font size for small screens */
+    }
+
+    .main--content {
+        padding: 5px;
+    }
+
+    td button {
+        padding: 3px 6px; /* Further reduce button size */
+    }
+}

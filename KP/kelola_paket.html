@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelola Paket</title>
+    <link rel="stylesheet" href="kelola_paket.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo"></div>
+      <ul class="menu">
+        <li>
+          <a href="complaint.html">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Complaint</span>
+          </a>
+        </li>
+        <li>
+          <a href="keperluan.html">
+            <i class="fas fa-briefcase"></i>
+            <span>Keperluan</span>
+          </a>
+        </li>
+        <li>
+          <a href="statik.html">
+            <i class="fas fa-chart-line"></i>
+            <span>Grafik</span>
+          </a>
+        </li>
+        <li>
+          <a href="kelola_paket.html">
+            <i class="fas fa-box"></i>
+            <span>Pesanan Virtual Office</span>
+          </a>
+        </li>
+        <li>
+          <a href="PesananRuangMeeting.html">
+            <i class="fas fa-box"></i>
+            <span>Pesanan Ruang Meeting</span>
+          </a>
+        </li>
+        <li>
+          <a href="kelola_ruangan.html">
+            <i class="fas fa-building"></i>
+            <span>Kelola Virtual Office</span>
+          </a>
+        </li>
+        <li>
+          <a href="kelola_RMeeting.html">
+              <i class="fas fa-user"></i>
+              <span>Kelola_Ruang<br>Meeting</span>
+          </a>
+      </li>
+      <li>
+        <a href="jadwal_meeting.html">
+            <i class="fa fa-clock"></i>
+            <span>Jadwal Meeting</span>
+        </a>
+      </li>
+        <li class="logout">
+          <a href="login.html">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main--content">
+      <div class="header--wrapper">
+        <div class="header--title">
+          <h2>Pemesanan Virtual Office</h2>
+        </div>
+      </div>
+
+      <!-- Konten Kelola Paket -->
+      <div class="tabular--wrapper">
+        <h3 class="main--title">Daftar Pemesanan Virtual Office</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Id Transaksi</th>
+                <th>Nama Lengkap</th>
+                <th>No HP</th>
+                <th>Metode Bayar</th>
+                <th>Jumlah Bayar</th>
+                <th>Tanggal Bayar</th>
+                <th>Type Ruangan</th>
+                <th>Durasi</th>
+                <th>Tanggal Sewa</th>
+                <th>Akhir Sewa</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const tableBody = document.querySelector("table tbody");
+    
+        const fetchBookings = async () => {
+          try {
+            const response = await fetch("http://localhost:5000/booking");
+            console.log("response status: ", response.status)
+    
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            console.log("Data yang diterima: ", data);
+    
+            if (data.status === 200) {
+              populateTable(data.bookings);
+            } else {
+              console.error("Error fetching bookings:", data.message);
+            }
+          } catch (error) {
+            console.error("Error fetching bookings:", error);
+          }
+        };
+    
+        const populateTable = (bookings) => {
+          tableBody.innerHTML = "";
+
+          bookings.forEach((booking) => {
+            const roomType = booking.Type_Ruangan || 'Tipe Tidak Diketahui';
+            const tanggalBayar = new Date(booking.Tanggal_Bayar).toLocaleDateString("id-ID");
+            const tanggalSewa = new Date(booking.Tanggal_Sewa).toLocaleDateString("id-ID");
+            const akhirSewa = new Date(booking.Akhir_Sewa).toLocaleDateString("id-ID");
+
+            const jumlahBayar = new Intl.NumberFormat("id-ID", {
+              style: "currency",
+              currency: "IDR",
+              minimumFractionDigits: 0,
+            }).format(booking.Jumlah_Bayar);
+
+            const row = document.createElement("tr");
+
+            const statusClass = booking.Status === 'Habis'
+            ? 'status-completed'
+            : booking.Status === 'Berjalan'
+            ? 'status-ongoing'
+            : 'status-pending';
+
+            row.innerHTML = `
+              <td>${booking.ID_Transaksi}</td>
+              <td>${booking.Nama_Lengkap}</td>
+              <td>${booking.No_Hp}</td>
+              <td>${booking.Metode_Pembayaran}</td>
+              <td>${jumlahBayar}</td>
+              <td>${tanggalBayar}</td>
+              <td>${roomType}</td>
+              <td>${booking.durasi} Bulan</td>
+              <td>${tanggalSewa}</td>
+              <td>${akhirSewa}</td>
+              <td class="${statusClass}">${booking.Status}</td>
+              <button class="delete-button" data-id="${booking.ID_Transaksi}">Hapus</button>
+              </td>
+            `;
+            tableBody.appendChild(row);
+          });
+        };
+
+const handleDelete = async (ID_Transaksi) => {
+          const confirmDelete = confirm("Apakah Anda yakin ingin menghapus data ini?");
+          if (!confirmDelete) return;
+
+          try {
+            const response = await fetch(`http://localhost:5000/deleteBooking/${ID_Transaksi}`, {
+              method: "DELETE",
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+              alert(result.message);
+              fetchBookings(); 
+            } else {
+              alert(`Error: ${result.message}`);
+            }
+          } catch (error) {
+            console.error("Error saat menghapus data:", error);
+            alert("Terjadi kesalahan saat menghapus data.");
+          }
+        };
+
+        document.addEventListener("change", async(event) =>{
+          if(event.target.classList.contains("status-dropdown")){
+            const id = event.target.dataset.id;
+            const status = event.target.value;
+
+            try{
+              const response = await fetch(`http://localhost:5000/updateBookingStatus/${id}`,{
+                method: "PUT",
+                headers: {
+                  "Content-Type":  "application/json",
+                },
+                body: JSON.stringify({status: status}),
+              });
+
+              const result = await response.json();
+              if(response.ok){
+                alert(result.message);
+              }else{
+                alert(`Error: ${result.message}`);
+              }
+            }catch(error){
+              console.error("Error saat memperbarui status:", error);
+              alert("Terjadi kesalahan saat memperbarui status.");
+            }
+          }
+        });
+
+        document.addEventListener("click", (event) => {
+          if (event.target.classList.contains("delete-button")) {
+            const id = event.target.dataset.id;
+            handleDelete(id);
+          }
+        });  
+        setInterval(fetchBookings, 300000);
+        fetchBookings();
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.page {
+  padding: 20px;
+}
+
+.add-button,
+.edit-button,
+.delete-button,
+.accept-button,
+.reject-button,
+.complete-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.add-button {
+  background-color: #008cba;
+}
+
+.edit-button {
+  background-color: #ffa500;
+}
+
+.delete-button {
+  background-color: #ff6347;
+}
+
+.accept-button {
+  background-color: #32cd32;
+}
+
+.reject-button {
+  background-color: #ff6347;
+}
+
+.complete-button {
+  background-color: #4682b4;
+}
+
+.package-list {
+  margin-top: 20px;
+}
+
+.package-item {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #333;
+  color: white;
+}
+
+.user-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelola User</title>
+    <link rel="stylesheet" href="kelola_user.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo"></div>
+      <ul class="menu">
+        <li>
+          <a href="login.html">
+            <i class="fas fa-user-tie"></i>
+            <span>Login</span>
+          </a>
+        </li>
+        <li>
+          <a href="complaint.html">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Complaint</span>
+          </a>
+        </li>
+        <li>
+          <a href="keperluan.html">
+            <i class="fas fa-briefcase"></i>
+            <span>Keperluan</span>
+          </a>
+        </li>
+        <li>
+          <a href="grafik.html">
+            <i class="fas fa-chart-line"></i>
+            <span>Grafik</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="kelola_paket.html" onclick="showPage('kelola_paket')">
+            <i class="fas fa-box"></i>
+            <span>Mengelola Paket</span>
+          </a>
+        </li>
+        <li>
+          <a href="kelola_user.html" onclick="showPage('kelola_user')">
+            <i class="fas fa-users"></i>
+            <span>Mengelola User</span>
+          </a>
+        </li>
+        <li class="logout">
+          <a href="login.html">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main--content">
+      <div class="header--wrapper">
+        <div class="header--title">
+          <h2>Kelola User</h2>
+        </div>
+        <div class="user--info">
+          <span>Admin</span>
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </div>
+
+      <!-- Konten Kelola Paket -->
+      <div class="tabular--wrapper">
+        <h3 class="main--title">Daftar User</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rendy</td>
+                <td>
+                  <button class="edit-button">Lihat</button>
+                  <button class="delete-button">Hapus</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Rizki</td>
+                <td>
+                  <button class="edit-button">Lihat</button>
+                  <button class="delete-button">Hapus</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src=""></script>
+  </body>
+</html>

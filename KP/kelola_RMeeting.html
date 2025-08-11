@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelola Ruangan</title>
+    <link rel="stylesheet" href="kelola_RMeeting.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li>
+                <a href="complaint.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Complaint</span>
+                </a>
+            </li>
+            <li>
+                <a href="keperluan.html">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Keperluan</span>
+                </a>
+            </li>
+            <li>
+                <a href="statik.html">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Grafik</span>
+                </a>
+            </li>
+            <li>
+                <a href="kelola_paket.html">
+                  <i class="fas fa-box"></i>
+                  <span>Pesanan Virtual Office</span>
+                </a>
+            </li>
+            <li>
+                <a href="PesananRuangMeeting.html">
+                  <i class="fas fa-box"></i>
+                  <span>Pesanan Ruang Meeting</span>
+                </a>
+            <li>
+                <a href="kelola_ruangan.html">
+                    <i class="fas fa-building"></i>
+                    <span>Kelola Virtual Office</span>
+                </a>
+            </li>
+            <li>
+                <a href="kelola_RMeeting.html">
+                    <i class="fas fa-user"></i>
+                    <span>Kelola_Ruang<br>Meeting</span>
+                </a>
+            </li>
+            <li>
+                <a href="jadwal_meeting.html">
+                    <i class="fa fa-clock"></i>
+                    <span>Jadwal Meeting</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="login.html">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+        </ul>
+    </div>
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <h2>Kelola Ruang Rapat</h2>
+            </div>
+        </div>
+
+        <!-- Konten Kelola Ruangan -->
+        <div class="tabular--wrapper">
+            <button class="add-button">Tambah Data</button>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="roomeeting">Nama Ruang Rapat</th>
+                    <th class="roomprice">Harga</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close" style="cursor: pointer;">&times;</span>
+                <h3>Edit Ruangan</h3>
+                <form id="editForm">
+                    <label for="roomId">ID Ruangan:</label>
+                    <input type="text" id="roomId" name="roomId" readonly />
+                    <label for="roomName">Nama Ruangan:</label>
+                    <input type="text" id="roomName" name="roomName" required />
+                    <label for="roomPrice">Harga:</label>
+                    <input type="text" id="roomPrice" name="roomPrice" inputmode="numeric" required />
+                    <button type="submit">Simpan</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="addModal" class="modal">
+          <div class="modal-content">
+            <span class="close" style="cursor: pointer;">&times;</span>
+            <h3>Tambah Ruang Meeting</h3>
+            <form id="addForm">
+                <label for="newRoomName">Nama Ruangan:</label>
+                <input type="text" id="newRoomName" name="newRoomName" required>
+                <label for="newRoomPrice">Harga:</label>
+                <input type="number" id="newRoomPrice" name="newRoomPrice" required>
+        
+                <button type="submit">Tambah</button>
+            </form>
+          </div>
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const tableBody = document.querySelector("table tbody");
+        const editModal = document.getElementById("editModal");
+        const addModal = document.getElementById("addModal");
+        const closeModal = document.querySelectorAll(".close");
+        const editForm = document.getElementById("editForm");
+        const roomIdInput = document.getElementById("roomId");
+        const roomNameInput = document.getElementById("roomName");
+        const roomPriceInput = document.getElementById("roomPrice");
+        const addForm = document.getElementById("addForm");
+        const newRoomNameInput = document.getElementById("newRoomName");
+        const newRoomPriceInput = document.getElementById("newRoomPrice");
+        const addButton = document.querySelector(".add-button");
+
+        const fetchRoomsMeeting = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/roomeeting");
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.json();
+                if (data.status === 200) {
+                    populateTable(data.roomeetings);
+                } else {
+                    console.error("Error fetching rooms:", data.message);
+                }
+            } catch (error) {
+                console.error("Error fetching rooms:", error);
+            }
+        };
+
+        const populateTable = (roomeetings) => {
+            tableBody.innerHTML = "";
+            roomeetings.forEach((roomeeting) => {
+                const formattedPrice = new Intl.NumberFormat("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                    minimumFractionDigits: 0,
+                }).format(roomeeting.Harga);
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${roomeeting.Nama_Ruangan}</td>
+                    <td>${formattedPrice}</td>
+                    <td>
+                        <button class="delete-button" data-id="${roomeeting.ID_Meeting}">Hapus</button>
+                        <button class="edit-button" data-id="${roomeeting.ID_Meeting} "data-name="${roomeeting.Nama_Ruangan}" data-price="${roomeeting.Harga}">Edit</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        };
+
+        const handleDelete = async (ID_Meeting) => {
+            const confirmDelete = confirm("Apakah Anda yakin ingin menghapus ruangan ini?");
+            if (!confirmDelete) return;
+
+            try {
+                const response = await fetch(`http://localhost:5000/deleteRoomMeeting/${ID_Meeting}`, {
+                    method: "DELETE",
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message);
+                    fetchRoomsMeeting();
+                } else {
+                    alert(`Error: ${result.message}`);
+                }
+            } catch (error) {
+                console.error("Error saat menghapus ruangan:", error);
+                alert("Terjadi kesalahan saat menghapus ruangan.");
+            }
+        };
+
+        const handleEdit = (roomeeting) => {
+            roomIdInput.value = roomeeting.ID_Meeting;
+            roomNameInput.value = roomeeting.Nama_Ruangan;
+            roomPriceInput.value = roomeeting.Harga;
+            editModal.style.display = "block";
+        };
+
+        const handleAdd = () => {
+            addModal.style.display = "block";
+        };
+
+        closeModal.forEach((modal) => {
+            modal.onclick = () => {
+                editModal.style.display = "none";
+                addModal.style.display = "none";
+            };
+        });
+
+        window.onclick = (event) => {
+            if (event.target === editModal || event.target === addModal) {
+                editModal.style.display = "none";
+                addModal.style.display = "none";
+            }
+        };
+
+        addForm.onsubmit = async (event) => {
+            event.preventDefault();
+
+            const newRoom = {
+                Nama_Ruangan: newRoomNameInput.value,
+                Harga: parseInt(newRoomPriceInput.value),
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/createRoomMeeting', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newRoom),
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message);
+                    fetchRoomsMeeting();
+                    addForm.reset();
+                    addModal.style.display = 'none';
+                } else {
+                    alert(`Error: ${result.error}`);
+                }
+            } catch (error) {
+                console.error('Error saat menambahkan ruangan:', error);
+                alert('Terjadi kesalahan saat menambahkan ruangan.');
+            }
+            };
+
+        editForm.onsubmit = async (event) => {
+            event.preventDefault();
+            const updatedRoom = {
+                ID_Meeting: roomIdInput.value,
+                Nama_Ruangan: roomNameInput.value,
+                Harga: parseInt(roomPriceInput.value),
+            };
+
+            console.log(updatedRoom);
+
+            if(!updatedRoom.ID_Meeting || !updatedRoom.Nama_Ruangan || !updatedRoom.Harga === undefined) {
+                return res.status(400).json({message: "Data ruangan masih ada yang kosong"})
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5000/updateRoomMeeting`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(updatedRoom),
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message);
+                    fetchRoomsMeeting();
+                    editModal.style.display = "none";
+                } else {
+                    alert(`Error: ${result.message}`);
+                }
+            } catch (error) {
+                console.error("Error saat mengedit ruangan:", error);
+                alert("Terjadi kesalahan saat mengedit ruangan.");
+            }
+        };
+
+        document.addEventListener("click", (event) => {
+            if (event.target.classList.contains("delete-button")) {
+                const id = event.target.dataset.id;
+                handleDelete(id);
+            } else if (event.target.classList.contains("edit-button")) {
+                const room = {
+                    ID_Meeting: event.target.dataset.id,
+                    Nama_Ruangan: event.target.dataset.name,
+                    Harga: event.target.dataset.price,
+                };
+                handleEdit(room);
+            } else if (event.target.classList.contains("add-button")) {
+                handleAdd();
+            }
+        });
+        fetchRoomsMeeting();
+    });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

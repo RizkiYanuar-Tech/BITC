@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Keperluan Tamu</title>
+    <link rel="stylesheet" href="keperluan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Tambahkan Chart.js -->
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li>
+                <a href="login.html">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Login</span>
+                </a>
+            </li>
+            <li>
+                <a href="complaint.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Complaint</span>
+                </a>
+            </li>
+            <li>
+                <a href="keperluan.html">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Keperluan</span>
+                </a>
+            </li>
+            <li>
+                <a href="statik.html">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Grafik</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="kelola_paket.html" onclick="showPage('kelola_paket')">
+                    <i class="fas fa-box"></i>
+                    <span>Mengelola Paket</span>
+                </a>
+            </li>
+            <li>
+                <a href="kelola_user.html" onclick="showPage('kelola_user')">
+                    <i class="fas fa-users"></i>
+                    <span>Mengelola User</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="login.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Main content -->
+    <div class="main--content">
+        <!-- Header -->
+        <div class="header--wrapper">
+            <div class="header--title">
+                <h2>Keperluan Tamu</h2>
+            </div>
+        </div>
+
+        <!-- Tabel Keperluan Tamu -->
+        <div class="tab-wrapper">
+            <button class="status-button pending" onclick="filterData('pending')">1 Pending</button>
+            <button class="status-button waiting" onclick="filterData('waiting')">1 Waiting</button>
+            <button class="status-button completed" onclick="filterData('completed')">1 Completed</button>
+        </div>
+
+        <div class="table-container">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Telepon</th>
+                        <th>Keperluan</th>
+                        <th>Tujuan</th>
+                        <th>Waktu</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data akan diisi dengan JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Grafik Total Kunjungan -->
+        <div class="chart-container">
+            <h3>Total Kunjungan</h3>
+            <canvas id="visitChart"></canvas>
+        </div>
+
+        <!-- Daftar 10 Tamu Terakhir -->
+        <div class="latest-visitors">
+            <h3>10 Tamu Terakhir</h3>
+            <div id="visitorList"></div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk mendapatkan jumlah tamu berdasarkan status
+        async function getStatusCounts() {
+            try {
+                // Fetch data untuk status waiting
+                const responsePending = await fetch('http://localhost:5000/getTamuByStatus/pending');
+                const pendingData = await responsePending.json();
+
+                const responseWaiting = await fetch('http://localhost:5000/getTamuByStatus/waiting');
+                const waitingData = await responseWaiting.json();
+
+                // Fetch data untuk status completed
+                const responseCompleted = await fetch('http://localhost:5000/getTamuByStatus/completed');
+                const completedData = await responseCompleted.json();
+
+                // Tampilkan jumlah di tombol waiting dan completed
+                document.querySelector('.status-button.pending').innerText = `${pendingData.length} Pending`;
+                document.querySelector('.status-button.waiting').innerText = `${waitingData.length} Waiting`;
+                document.querySelector('.status-button.completed').innerText = `${completedData.length} Completed`;
+            } catch (error) {
+                console.error('Error fetching status counts:', error);
+            }
+        }
+
+        // Fungsi untuk mendapatkan data kunjungan dari backend dan menampilkan grafik
+        async function getVisitData() {
+            try {
+                const response = await fetch('http://localhost:5000/getVisitData');
+                const visitData = await response.json();
+
+                // Ubah data ke format yang bisa diterima oleh Chart.js
+                const labels = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                const data = Array(12).fill(0);
+                visitData.forEach(row => {
+                    data[row.bulan - 1] = row.total;
+                });
+
+                // Warna yang berbeda untuk setiap bulan
+                const backgroundColors = [
+                    'rgba(255, 99, 132, 0.5)',   // Januari
+                    'rgba(54, 162, 235, 0.5)',   // Februari
+                    'rgba(255, 206, 86, 0.5)',   // Maret
+                    'rgba(75, 192, 192, 0.5)',   // April
+                    'rgba(153, 102, 255, 0.5)',  // Mei
+                    'rgba(255, 159, 64, 0.5)',   // Juni
+                    'rgba(99, 255, 132, 0.5)',   // Juli
+                    'rgba(162, 54, 235, 0.5)',   // Agustus
+                    'rgba(206, 86, 255, 0.5)',   // September
+                    'rgba(192, 192, 75, 0.5)',   // Oktober
+                    'rgba(102, 255, 153, 0.5)',  // November
+                    'rgba(64, 159, 255, 0.5)'    // Desember
+                ];
+
+                // Buat grafik menggunakan Chart.js dengan jumlah per bulan
+                const ctx = document.getElementById('visitChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: `Kunjungan per Bulan`,
+                            data: data,
+                            backgroundColor: backgroundColors, // Set warna berbeda untuk setiap bulan
+                            borderColor: 'rgba(113, 99, 186, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    generateLabels: (chart) => {
+                                        return chart.data.labels.map((label, i) => ({
+                                            text: `${label}: ${chart.data.datasets[0].data[i]} Kunjungan`,
+                                            fillStyle: chart.data.datasets[0].backgroundColor[i],
+                                            hidden: false
+                                        }));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching visit data:', error);
+            }
+        }
+
+
+        // Fungsi untuk mendapatkan data tamu terbaru dari backend
+        async function getLatestVisitors() {
+            try {
+                const response = await fetch('http://localhost:5000/getLatestVisitors');
+                const visitors = await response.json();
+                const visitorList = document.getElementById('visitorList');
+                visitorList.innerHTML = ''; // Kosongkan daftar sebelum menambahkan
+
+                visitors.forEach(visitor => {
+                    const visitorCard = `
+                        <div class="visitor-card">
+                            <div class="visitor-info">
+                                <img src="download.png" alt="Visitor Photo" class="visitor-photo">
+                                <div class="visitor-details">
+                                    <span class="visitor-name">${visitor.nama}</span>
+                                    <span class="visitor-keperluan">${visitor.keperluan}</span>
+                                    <span class="visitor-badge">${visitor.telepon || 'Nomor tidak tersedia'}</span>
+                                </div>
+                            </div>
+                            <span class="visitor-time">${new Date(visitor.waktu).toLocaleString()}</span>
+                        </div>
+                    `;
+                    visitorList.innerHTML += visitorCard;
+                });
+            } catch (error) {
+                console.error('Error fetching visitors:', error);
+            }
+        }
+
+        // Fungsi untuk filter data tamu berdasarkan status (waiting/completed)
+        async function filterData(status) {
+            try {
+                const response = await fetch(`http://localhost:5000/getTamuByStatus/${status}`);
+                const data = await response.json();
+                const tableBody = document.querySelector('#data-table tbody');
+                tableBody.innerHTML = ''; // Clear previous data
+                let aksiButton = '';
+                data.forEach((item) => {
+                    const row = document.createElement('tr');
+                if (status === 'pending') {
+                    aksiButton = `
+                    <td><button onclick="updateStatus(${item.id}, 'waiting')">Masukan Ke Waiting</button></td>
+                    `;
+                } else if (status === 'waiting') {
+                    aksiButton = `
+                    <td><button onclick="updateStatus(${item.id}, 'completed')">Selesaikan</button></td>
+                    `;
+                } else if (status === 'completed') {
+                    aksiButton = `
+                    <td><button>Sudah Selesai</button></td>
+                    `;
+                }
+                    row.innerHTML = `
+                      <td>${item.nama}</td>
+                      <td>${item.telepon}</td>
+                      <td>${item.keperluan}</td>
+                      <td>${item.tujuan || 'Tidak ada tujuan'}</td>
+                      <td>${new Date(item.waktu).toLocaleString()}</td>
+                      <td>${item.status}</td>
+                      ${aksiButton}
+                    `;
+                    tableBody.appendChild(row);
+                });
+
+                // Panggil getStatusCounts untuk memperbarui jumlah status
+                getStatusCounts();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Fungsi untuk memperbarui status tamu menjadi completed
+        async function updateStatus(id, status) {
+            try {
+                const response = await fetch('http://localhost:5000/updateTamuStatus', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id, status }),
+                });
+
+                const result = await response.json();
+                alert(result.message);
+                filterData('pending'); // Refresh the table after updating
+                getStatusCounts();     // Tambahkan ini untuk memperbarui jumlah waiting dan completed
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Panggil fungsi ketika halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            getVisitData();
+            getLatestVisitors();
+            filterData('pending'); // Default menampilkan status pending
+            getStatusCounts();      // Tambahkan ini agar jumlah status langsung diperbarui saat halaman dimuat
+        });
+    </script>
+</body>
+
+</html>

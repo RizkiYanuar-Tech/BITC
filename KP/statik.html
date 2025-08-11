@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Design</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo"></div>
+    <ul class="menu">
+      <li>
+        <a href="login.html">
+          <i class="fas fa-user-tie"></i>
+          <span>Login</span>
+        </a>
+      </li>
+      <li>
+        <a href="complaint.html">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Complaint</span>
+        </a>
+      </li>
+      <li>
+        <a href="keperluan.html">
+          <i class="fas fa-briefcase"></i>
+          <span>Keperluan</span>
+        </a>
+      </li>
+      <li>
+        <a href="statik.html">
+          <i class="fas fa-chart-line"></i>
+          <span>Grafik</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="kelola_paket.html" onclick="showPage('kelola_paket')">
+          <i class="fas fa-box"></i>
+          <span>Mengelola Paket</span>
+        </a>
+      </li>
+      <li>
+        <a href="kelola_user.html" onclick="showPage('kelola_user')">
+          <i class="fas fa-users"></i>
+          <span>Mengelola User</span>
+        </a>
+      </li>
+      <li class="logout">
+        <a href="login.html">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main--content">
+    <div class="header--wrapper">
+      <div class="header--title">
+        <span></span>
+        <h2>Survey Kepuasan Masyarakat UPT Cimahi Techno Park</h2>
+      </div>
+
+    </div>
+
+    <div class="card--container">
+      <div class="filters"></div>
+      <label for="filter-category">Pilih Pertanyaan:</label>
+      <select id="filter-category">
+        <option value="">Loading...</option>
+      </select>
+    </div>
+    <div class="card--container" style="display: flex; justify-content: center; flex-direction: column;">
+      <table>
+        <tr>
+          <td>Sangat Sesuai</td>
+          <td id="sangat-sesuai">0</td>
+        </tr>
+        <tr>
+          <td>Sesuai</td>
+          <td id="sesuai">0</td>
+        </tr>
+        <tr>
+          <td>Kurang Sesuai</td>
+          <td id="kurang-sesuai">0</td>
+        </tr>
+      </table>
+      <div style="margin-top: 10px; padding: 10px;">
+        <p id="persentase-responden"> </p>
+      </div>
+    </div>
+
+    <!-- Chart to display data -->
+    <canvas id="surveyChart" width="400" height="200"></canvas>
+  </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Fetch data from the server
+    async function fetchSurveyData() {
+      const response = await fetch('http://localhost:5000/getStatistik');
+      const data = await response.json();
+      return data;
+    }
+
+    // Initialize chart
+    const ctx = document.getElementById('surveyChart').getContext('2d');
+    let surveyChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Sangat Sesuai', 'Sesuai', 'Kurang Sesuai'],
+        datasets: [
+          {
+            label: 'Sangat Sesuai',
+            data: [],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Sesuai',
+            data: [],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Kurang Sesuai',
+            data: [],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Update chart with selected question data
+    function updateChart(data) {
+      // Update chart data
+      surveyChart.data.datasets[0].data = [data.sangat_sesuai, 0, 0];
+      surveyChart.data.datasets[1].data = [0, data.sesuai, 0];
+      surveyChart.data.datasets[2].data = [0, 0, data.kurang_sesuai];
+      surveyChart.update();
+
+      // Update table values
+      document.getElementById('sangat-sesuai').textContent = data.sangat_sesuai;
+      document.getElementById('sesuai').textContent = data.sesuai;
+      document.getElementById('kurang-sesuai').textContent = data.kurang_sesuai;
+
+      // Convert string values to numbers (if necessary)
+      const sangatSesuai = Number(data.sangat_sesuai);
+      const sesuai = Number(data.sesuai);
+      const kurangSesuai = Number(data.kurang_sesuai);
+
+      // Calculate total and percentages
+      const totalResponses = sangatSesuai + sesuai + kurangSesuai;
+      const percentSangatSesuai = ((sangatSesuai / totalResponses) * 100).toFixed(2);
+      const percentSesuai = ((sesuai / totalResponses) * 100).toFixed(2);
+      const percentKurangSesuai = ((kurangSesuai / totalResponses) * 100).toFixed(2);
+
+      // Update the summary text
+      document.getElementById('persentase-responden').textContent =
+        `Dari data diatas dapat disimpulkan bahwa responden ${percentSangatSesuai}% sangat sesuai, ${percentSesuai}% sesuai, dan ${percentKurangSesuai}% kurang sesuai`;
+    }
+
+
+    // Populate question dropdown and set up chart update on selection
+    async function init() {
+      const surveyData = await fetchSurveyData();
+      const filterCategory = document.getElementById('filter-category');
+      filterCategory.innerHTML = surveyData.map((question, index) => `<option value="${index}">${question.pertanyaan}</option>`).join('');
+
+      // Update chart with the first question data by default
+      if (surveyData.length > 0) {
+        updateChart(surveyData[0]);
+      }
+
+      // Listen for dropdown change
+      filterCategory.addEventListener('change', function () {
+        const selectedIndex = this.value;
+        if (selectedIndex !== "") {
+          updateChart(surveyData[selectedIndex]);
+        }
+      });
+
+    }
+
+    init();
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

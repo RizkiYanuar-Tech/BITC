@@ -1,0 +1,52 @@
+ .responded {
+      background-color: #d4edda;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .filters {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .filters label {
+      font-weight: bold;
+    }
+
+    #surveyChart {
+      margin-top: 20px;
+    }
+
+    .filters select {
+      max-width: 300px;
+      /* Atur lebar sesuai kebutuhan */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Tooltip untuk menampilkan teks lengkap saat di-hover */
+    .filters option:hover {
+      overflow: visible;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+
+    #surveyChart {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
