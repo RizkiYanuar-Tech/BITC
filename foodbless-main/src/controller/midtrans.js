@@ -4,8 +4,8 @@ const {sendRoomBookingEmail} = require('./mailer');
 
 let snap = new midtransclient.Snap({
     isProduction: false,
-    serverKey: 'SB-Mid-server-MTHm3X1sj8GTjVosdKR-T7gg',
-    clientKey: 'SB-Mid-client-WRrnBAPxArMioHRQ',
+    serverKey: '',
+    clientKey: '',
 });
 
 const createMidtransTransaction = async (req, res) => {
