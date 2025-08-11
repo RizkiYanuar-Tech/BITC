@@ -1,0 +1,124 @@
+#sewa-ruangan h2 {
+  font-style: normal;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #333;
+}
+
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.form-name input,
+.form-email input,
+.form-phonenumber input,
+.form-datemeeting input,
+.form-ruanganmeeting select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-name input:focus,
+.form-email input:focus,
+.form-phonenumber input:focus,
+.form-datemeeting input:focus,
+.form-ruanganmeeting select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+#durationContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card-duration {
+  flex: 0 1 calc(33.333% - 1rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  text-align: center;
+  transition: transform 0.3s, background-color 0.3s, border-color 0.3s;
+  cursor: pointer;  
+}
+
+.card-duration:hover {
+  transform: scale(1.05);
+  border-color: #007bff;
+}
+
+.card-duration.selected {
+  background-color: #008609;
+  color: white;
+  border-color: #008609;
+}
+
+.card-duration.disabled {
+  background-color: #f5f5f5;
+  pointer-events: auto;
+  color: grey;
+  cursor: not-allowed;
+  border-color: #ccc;
+  text-decoration: line-through;
+}
+
+.card-duration input[type="checkbox"] {
+  display: none;
+}
+
+#totalHours,
+#totalPrice {
+  font-size: 16px;
+  color: #333;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 50%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+}

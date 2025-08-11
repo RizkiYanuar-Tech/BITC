@@ -1,0 +1,287 @@
+/* CSS Global Styles */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+.complaint-section {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.complaint-section form {
+    background: rgba(255, 255, 255, 0.95); /* Transparansi pada latar belakang form */
+    width: 640px;
+    margin: 50px auto;
+    max-width: 97%;
+    padding: 55px 30px;
+    border-radius: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Bayangan lebih besar agar form lebih menonjol */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Perpindahan lebih smooth */
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Hover effect with smooth transition */
+.complaint-section form:hover {
+    transform: translateY(-0.5rem); 
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); /* Bayangan lebih kuat saat di-hover */
+}
+
+.complaint-section h2 {
+    letter-spacing: 6px;
+    border-bottom: 1px solid #007bff;
+    display: inline-block;
+    padding-bottom: 8px;
+    margin-bottom: 32px;
+    color: #007bff;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.complaint-section label {
+    margin-bottom: 5px;
+    color: #343a40;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.complaint-section input,
+.complaint-section textarea {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    outline: 0;
+    padding: 16px;
+    width: 100%;
+    background: #ffffff;
+    color: #343a40;
+    font-size: 17px;
+    transition: background 0.4s ease, border 0.4s ease; /* Transisi yang lebih smooth */
+}
+
+.complaint-section input:hover,
+.complaint-section textarea:hover {
+    background: #e9ecef;
+    border: 1px solid #007bff;
+}
+
+.complaint-section textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* Smooth hover transition for submit button */
+.complaint-section #submitbutton {
+    background: #007bff;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    height: 44px;
+    letter-spacing: 3px;
+    outline: 0;
+    padding: 0 20px;
+    color: #ffffff;
+    transition: background 0.4s ease, transform 0.4s ease; /* Smooth hover transition */
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+}
+
+/* Hover effect with smooth transition */
+.complaint-section #submitbutton:hover {
+    background: #0056b3;
+    color: #ffffff;
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.complaint-section #submitbutton:disabled {
+    background: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Adding extra space below the textarea */
+.complaint-section #message {
+    margin-bottom: 10px;
+}
+
+/* Form hover effect - with smooth transition */
+.complaint-section form:hover {
+    transform: translateY(-0.5rem); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.complaint-section #submitbutton:hover {
+    background: #0056b3;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.complaint-section select {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    outline: 0;
+    padding: 16px;
+    width: 100%;
+    background: #ffffff;
+    color: #343a40;
+    font-size: 17px;
+    transition: background 0.4s ease, border 0.4s ease;
+}
+
+.complaint-section select:hover {
+    background: #e9ecef;
+    border: 1px solid #007bff;
+}
+
+.complaint-section input[type="file"] {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    outline: 0;
+    padding: 16px;
+    width: 100%;
+    background: #ffffff;
+    color: #343a40;
+    font-size: 17px;
+    transition: background 0.4s ease, border 0.4s ease;
+}
+
+.complaint-section input[type="file"]::file-selector-button {
+    background: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.complaint-section input[type="file"]::file-selector-button:hover {
+    background: #0056b3;
+}
+
+/* Styling untuk section informasi */
+.services-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.services-title {
+    color: #1a237e;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.services-description {
+    color: #424242;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.services-description strong {
+    color: #1a237e;
+}
+
+.facilities-info {
+    margin: 2rem auto;
+    max-width: 1000px;
+}
+
+.facilities-info h3 {
+    color: #1a237e;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.facilities-types {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.facility-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 450px;
+    padding: 2rem;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.facility-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+.facility-card h4 {
+    color: #1a237e;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #1a237e;
+    display: inline-block;
+}
+
+.facility-card p {
+    color: #424242;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.facility-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.facility-card li {
+    color: #616161;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.facility-card li:before {
+    content: "•";
+    color: #1a237e;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .services-title {
+        font-size: 2rem;
+    }
+    
+    .facilities-types {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .facility-card {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}
+

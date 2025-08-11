@@ -1,0 +1,44 @@
+/* Root */
+@import url('../styles/root.css');
+
+/* Header */
+@import url('../styles/header.css');
+
+/* Main */
+@import url('../styles/main.css');
+
+/* Footer */
+@import url('../styles/footer.css');
+
+/* Responsive */
+@import url('../styles/responsive.css');
+
+/* About Us Page */
+@import url('../styles/skm.css');
+
+/* Booking Page */
+@import url('../styles/booking.css');
+
+/* Payment Page */
+@import url('../styles/payment.css');
+
+/* Call center Page */
+@import url('../styles/callcenter.css');
+
+/* Call contact section Page */
+@import url('../styles/contact-section.css');
+
+/* Call complaints Page */
+@import url('../styles/complaints.css');
+
+/* Sewa Virtual Office*/
+@import url('../styles/sewa.css');
+
+/* Homepage Virtual Office*/
+@import url('../styles/mainvoffice.css');
+
+@import url('../styles/formrapat.css');
+
+@import url('../styles/paketnormal.css');
+
+@import url('../styles/rapat.css');

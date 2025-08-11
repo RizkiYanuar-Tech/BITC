@@ -1,0 +1,219 @@
+/* CSS Global Styles */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.section-complaint {
+    padding: 2rem 0;
+    background-color: #ffffff;
+    color: #333333;
+    text-align: center;
+}
+
+/* Main content styles */
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; 
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f0f8ff; /* Biru muda */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem; 
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+    color: #000000; /* Hitam */
+    position: relative;
+    height: 350px;
+}
+
+.card-image {
+    display: block;
+    margin: 1rem auto;
+    width: 80px;
+    height: auto;
+    z-index: 1;
+}
+
+#card-title-1, #card-title-2, #card-title-3 {
+    font-size: 1.5rem; 
+    margin-bottom: 1rem;
+    color: #000080; /* Biru Tua */
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #666666;
+    flex-grow: 1;
+}
+
+.card button {
+    background-color: #000080; /* Biru Tua */
+    border: none;
+    color: white; /* Putih */
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem; 
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    margin-top: auto;
+}
+
+.card button:hover {
+    background-color: #1e90ff; /* Biru Terang */
+}
+
+.card:hover {
+    transform: translateY(-0.5rem); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.services-section {
+    text-align: center;
+    padding: 6rem 2rem 3rem;
+    background-color: #ffffff;
+    color: #333333;
+    margin-bottom: 2rem;
+}
+
+.services-title {
+    font-size: 2.5rem;
+    color: #000080;
+    margin-bottom: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+.services-description {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666666;
+    padding: 0 1rem;
+}
+
+.about-section {
+    background-color: #ffffff;
+    padding: 5rem 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid #eaeaea;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    color: #000080;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.about-text h3 {
+    color: #333333;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+.about-text p {
+    color: #666666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -25%;
+    left: -25%;
+    animation: rotate 20s linear infinite;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .about-text h2 {
+        font-size: 2rem;
+    }
+
+    .about-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .about-image {
+        width: 80%;
+        margin: 0 auto;
+        aspect-ratio: 1;
+    }
+    
+    .about-section {
+        padding: 3rem 1rem;
+    }
+}

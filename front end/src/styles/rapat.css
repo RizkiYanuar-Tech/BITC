@@ -1,0 +1,447 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.6;
+  color: #333;
+  background: #f9f9f9;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+.header {
+  background: #0056b3;
+  color: white;
+  padding: 10px 0;
+}
+
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.header ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header ul li {
+  margin: 0 10px;
+}
+
+.header ul li a {
+  color: white;
+  padding: 5px 10px;
+  transition: background 0.3s ease;
+}
+
+.header ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.btn {
+  background: #3a1dbb;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #6a41ff;
+  transform: scale(1.05);
+}
+
+/* Banner */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10%;
+  background: #f9f9f9;
+}
+
+.banner .text-content {
+  max-width: 50%;
+}
+
+.banner h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #0056b3;
+}
+
+.banner p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.banner .image-content img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+/* Features Section */
+.features {
+  text-align: center;
+  padding: 30px 10%;
+  background: #fff;
+}
+
+.features h2 {
+  font-size: 2em;
+  color: #0056b3;
+  margin-bottom: 20px;
+}
+
+.feature-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.feature-item {
+  text-align: center;
+  padding: 15px;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 150px;
+  transition: transform 0.2s ease;
+}
+
+.feature-item i {
+  font-size: 2em;
+  color: #0056b3;
+  margin-bottom: 10px;
+}
+
+.feature-item p {
+  margin: 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.feature-item:hover {
+  transform: scale(1.05);
+}
+
+/* Locations Section */
+.locations {
+  padding: 30px 10%;
+  background: #f9f9f9;
+}
+
+.locations h2 {
+  font-size: 2em;
+  color: #0056b3;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.location-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.location-card {
+  text-align: center;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  max-width: 300px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.location-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.location-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+/* Benefits Section */
+.benefits {
+  padding: 30px 10%;
+  background: #fff;
+  text-align: center;
+}
+
+.benefits h2 {
+  font-size: 2em;
+  color: #0056b3;
+  margin-bottom: 20px;
+}
+
+.benefit-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.benefit-item {
+  text-align: center;
+  padding: 15px;
+  background: #f4f4f4;
+  border-radius: 5px;
+  max-width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.benefit-item i {
+  font-size: 2em;
+  color: #0056b3;
+  margin-bottom: 10px;
+}
+
+.benefit-item:hover {
+  transform: scale(1.05);
+}
+
+/* Packages Section */
+.packages {
+  padding: 30px 10%;
+  background: #fff;
+}
+
+.packages h2 {
+  font-size: 2em;
+  color: #0056b3;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.package-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.package-card {
+  text-align: center;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 300px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.package-card h3 {
+  font-size: 1.5em;
+  color: #0056b3;
+}
+
+.package-card p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.package-card:hover {
+  transform: scale(1.05);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.proposal-btn {
+  background: #e51b4b;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.contact-btn {
+  background: #0056b3;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.proposal-btn:hover {
+  background: #c4173f;
+}
+
+.contact-btn:hover {
+  background: #003d80;
+}
+
+/* Other Services Section */
+.other-services {
+  padding: 30px 10%;
+}
+
+.other-services h2 {
+  font-size: 2em;
+  color: #0056b3;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.services {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  max-width: 250px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonials Section */
+.testimonials {
+  padding: 30px 10%;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.testimonials h2 {
+  font-size: 2em;
+  color: #0056b3;
+  margin-bottom: 10px;
+}
+
+.testimonials .stats {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stat-item {
+  background: #f4f4f4;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #448ac4;
+  color: white;
+}
+/* Responsive Design */
+
+/* For tablets and smaller devices */
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .banner .text-content {
+    max-width: 100%;
+  }
+
+  .banner .image-content img {
+    max-width: 300px;
+    margin: 20px auto;
+  }
+
+  .feature-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .location-cards,
+  .package-cards,
+  .services {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .location-card,
+  .package-card,
+  .service-card {
+    max-width: 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+  .header nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header ul {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .header ul li {
+    margin: 0;
+  }
+
+  .banner .text-content h1 {
+    font-size: 2em;
+  }
+
+  .feature-item {
+    width: auto;
+  }
+
+  .benefit-list,
+  .stats {
+    flex-direction: column;
+  }
+
+  .stat-item {
+    font-size: 1em;
+  }
+
+  footer {
+    font-size: 0.9em;
+  }
+}

@@ -1,0 +1,90 @@
+/* CSS Global Styles */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+/* Call Center Section */
+.callcenter-section {
+    padding: 4rem 0;
+    background-color: #ffffff; /* Putih sebagai warna latar belakang utama */
+    color: #333; /* Hitam atau abu-abu gelap untuk teks */
+    text-align: center;
+}
+
+/* Contact Card */
+.contact-card {
+    background-color: #f8f9fa; /* Putih cerah untuk kartu kontak */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    margin: auto;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.contact-card:hover {
+    transform: scale(1.05);
+    background-color: #e0f2ff; /* Biru lembut saat di-hover */
+}
+
+/* Title */
+.contact-card h2 {
+    margin-bottom: 1.5rem;
+    color: #000000; /* Hitam pekat untuk judul */
+    text-align: center;
+}
+
+/* Contact Item */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.contact-item:hover {
+    background-color: #d0e7ff; /* Biru muda saat di-hover */
+    border-radius: 5px;
+}
+
+.contact-item .contact-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+    transition: filter 0.3s ease-in-out;
+}
+
+.contact-item:hover .contact-icon {
+    filter: brightness(0.8); /* Sedikit penggelapan pada ikon saat di-hover */
+}
+
+/* Title of Each Contact Info */
+.contact-item h4 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #004a85; /* Biru tua untuk judul item */
+    transition: color 0.3s ease-in-out;
+}
+
+.contact-item:hover h4 {
+    color: #003366; /* Biru lebih gelap saat di-hover */
+}
+
+/* Contact Info Text */
+.contact-item p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555555; /* Abu-abu gelap untuk deskripsi */
+    transition: color 0.3s ease-in-out;
+}
+
+.contact-item a {
+    color: inherit; /* Warna link menyesuaikan teks */
+    text-decoration: none;
+}
+
+.contact-item a:hover p {
+    color: #0056b3; /* Biru gelap untuk teks link saat di-hover */
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BITC</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="GOLING (Go Healing)" />
+    <meta name="keywords" content="goling team" />
+
+    <!-- Icon -->
+    <link rel="icon" href="../images/logo1.png" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+    <!-- Symbols -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- Skip-Link -->
+    <a href="#mainContent" class="skip-link">To the Content</a>
+
+    <!-- Header -->
+    <header>
+        <div id="navbarId" class="navbar">
+            <div class="headerInner">
+                <h1 class="headerTitle">
+                    BITC
+                </h1>
+                <ul class="navigationResponsive">
+                    <li>
+                        <button id="navigationDrawerId" class="navigationDrawer"
+                            aria-label="Open navigation drawer">☰</button>
+                    </li>
+                </ul>
+            </div>
+            <nav id="navbarContainerId" class="navbarContainer">
+                <ul class="navbarList">
+                  <li class="navbarItem"><a href="./index.html">Home</a></li>
+                  <li class="navbarItem"><a href="./details.html"> Survei Kepuasan</a></li>
+                  <li class="navbarItem"><a href="./complaints.html">Complaints</a>
+                  <li class="navbarItem"><a href="./bookingVoffice.html">Sewa Virtual Office</a></li>
+                </ul>
+              </nav>
+            </div>
+        <div class="hero">
+            <div class="heroContainer">
+                <h1 class="heroTitle">Baros Information Technology</h1>
+                <h2 class="heroTitle">Creative</h2>
+            </div>
+        </div>
+    </header>
+
+    <section class="skm-section">
+        <!-- Content -->
+        <div id="landing-page" class="container">
+            <div class="penilaian-content">
+                <div class="title-content">
+                    <h1>Survey Kepuasan Masyarakat</h1>
+                    <p>Setiap penilaian yang Anda berikan adalah suara yang berarti bagi kami, dan kami sangat
+                        menghargai kontribusi Anda dalam meningkatkan kualitas layanan kami.</p>
+                    <button class="btn-penilaian" onclick="startSurvey()">Beri Penilaian</button>
+                </div>
+                <div class="chart">
+                    <div class="chart-wrapper">
+                        <div class="circle-chart">
+                            <span id="respondent-count">0</span>
+                            <p>respondent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Diri Page (Hidden initially) -->
+        <div id="data-diri-page" class="container" style="display:none;">
+            <h2>Data Diri</h2>
+            <form id="data-diri-form">
+                <label>Nama Lengkap: <input type="text" name="nama" required></label><br>
+                <label>Jenis Kelamin:
+                    <select name="jenis_kelamin" required>
+                        <option value="">Pilih</option>
+                        <option value="laki-laki">Laki-laki</option>
+                        <option value="perempuan">Perempuan</option>
+                    </select>
+                </label><br>
+                <label>Umur: <input type="number" name="umur" required></label><br>
+                <label>Pekerjaan:
+                    <select name="posisi" required>
+                        <option value="">-Pilih-</option>
+                        <option value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
+                        <option value="KARYAWAN SWASTA">KARYAWAN SWASTA</option>
+                        <option value="WIRASWASTA/WIRAUSAHA">WIRASWASTA/WIRAUSAHA</option>
+                        <option value="PELAJAR/MAHASISWA">PELAJAR/MAHASISWA</option>
+                        <option value="IBU RUMAH TANGGA/KADER PEREMPUAN">IBU RUMAH TANGGA/KADER PEREMPUAN</option>
+                        <option value="PENGUSAHA">PENGUSAHA</option>
+                        <option value="FREELANCER/PEKERJA LEPAS">FREELANCER/PEKERJA LEPAS</option>
+                        <option value="PENSIUNAN">PENSIUNAN</option>
+                        <option value="TENAGA PENGAJAR/DOSEN">TENAGA PENGAJAR/DOSEN</option>
+                        <option value="PROFESIONAL">PROFESIONAL</option>
+                    </select>
+                </label><br>
+                <button type="button" class="btn-penilaian" onclick="goToSurvey()">Selanjutnya</button>
+            </form>
+        </div>
+
+        <!-- Survey Page (Hidden initially) -->
+        <div id="survey-page" class="wrapper container" style="display:none;">
+            <form id="surveyForm" name="personalityForm">
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Wave on Footer -->
+    <section class="wave">
+        <div class="air air1"></div>
+        <div class="air air2"></div>
+        <div class="air air3"></div>
+        <div class="air air4"></div>
+      </section>
+      
+      <!-- Footer -->
+      <footer id="contact">
+        <div class="foot">
+          <div class="footer-content">
+  
+            <div class="footlinks">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.html#destinations">Tentang Kami</a></li>
+                <li><a href="./index.html#contact">Informasi</a></li>
+                <li><a href="./about.html">Contact</a></li>
+              </ul>
+            </div>
+  
+            <div class="footlinks">
+              <h4>Contact</h4>
+              <ul>
+                <li class="contact-item">
+                  <a href="#" class="contact-link">Admin : (022) 86121025</a>
+                </li>
+                <li class="contact-item">
+                  <a href="#" class="contact-link">Email : technopark@cimahikota.go.id</a>
+                </li>
+                <li class="contact-item">
+                  <address>Jl. HMS Mintareja Sarjana Hukum, Baros, Kec. Cimahi Tengah, Kota Cimahi, Jawa Barat 40521</address>
+                </li>
+              </ul>
+            </div>
+  
+            <div class="footlinks">
+              <h4>Social Media</h4>
+              <div class="social">
+                <a href="https://web.whatsapp.com/send?phone=6281223020029" target="https://web.whatsapp.com/send?phone=6281223020029"><i class="bx bxl-whatsapp"></i></a>
+                <a href="https://www.facebook.com/technopark.cimahi/" target="https://www.facebook.com/technopark.cimahi/"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/technopark.cimahi/" target="https://www.instagram.com/technopark.cimahi/"><i class="bx bxl-instagram"></i></a>
+                <a href="https://x.com/i/flow/login?redirect_after_login=%2Fcimahitpark" target="https://x.com/i/flow/login?redirect_after_login=%2Fcimahitpark"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.youtube.com/@cimahitechnopark4127" target="https://www.youtube.com/@cimahitechnopark4127"><i class="bx bxl-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="end">
+          <p>BITC © 2024 All Rights Reserved</p>
+        </div>
+      </footer>
+
+    <script>
+        // Inisialisasi jumlah responden
+        let respondentCount = 0;
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                const response = await fetch('http://localhost:5000/getAllQuestions');
+                const respondentResponse = await fetch('http://localhost:5000/respondents');
+                const data = await response.json();
+                const respondentData = await respondentResponse.json();
+
+                document.getElementById("respondent-count").innerText = respondentData.length;
+                let iteration = 1;
+
+                for (const question of data) {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.id = question.id;
+                    questionDiv.className = `quiz-box quiz-${question.id}`;
+                    questionDiv.innerHTML = `<h2 class="quiz-question">${iteration}. ${question.pertanyaan}</h2>`;
+                    questionDiv.innerHTML += `
+                <span class="quiz-answer">
+                    <label><input type="radio" name="q${question.id}" value="0" onclick="saver(${question.id},0)"> <span>😀</span> Sangat Sesuai</label>
+                    <label><input type="radio" name="q${question.id}" value="1" onclick="saver(${question.id},1)"> <span>🙂</span> Sesuai</label>
+                    <label><input type="radio" name="q${question.id}" value="2" onclick="saver(${question.id},2)"> <span>😐</span> Kurang Sesuai</label>
+                </span>`;
+                    document.getElementById('surveyForm').appendChild(questionDiv);
+                    iteration++;
+                }
+
+                const submitButton = document.createElement('div');
+                submitButton.className = 'get-result';
+                submitButton.innerHTML = `<button class="btn-penilaian" type="button" onclick="submitSurvey()">Submit</button>`;
+                document.getElementById('surveyForm').appendChild(submitButton);
+            } catch (error) {
+                console.error('Error fetching respondent count:', error);
+            }
+        });
+        // Function untuk menampilkan halaman Data Diri dan menyembunyikan halaman landing
+        function startSurvey() {
+            document.getElementById("data-diri-page").style.display = "block";
+            document.querySelector(".penilaian-content").style.display = "none";
+        }
+
+        // Function untuk melanjutkan ke halaman survey setelah Data Diri
+        function goToSurvey() {
+            if (validateForm()) {
+                document.getElementById("data-diri-page").style.display = "none";
+                document.getElementById("survey-page").style.display = "block";
+            }
+        }
+
+        // Function untuk mengirimkan survey dan kembali ke halaman landing
+        function submitSurvey() {
+            if (validateSurvey()) {
+                // Ambil data diri dari form
+                const nama = document.querySelector('[name="nama"]').value;
+                const jenis_kelamin = document.querySelector('[name="jenis_kelamin"]').value;
+                const umur = document.querySelector('[name="umur"]').value;
+                const posisi = document.querySelector('[name="posisi"]').value;
+
+                // Ambil jawaban dari survei
+                const surveyAnswers = [];
+                document.querySelectorAll('.quiz-box').forEach((questionDiv) => {
+                    const questionId = questionDiv.id;  // Menggunakan id asli dari database
+                    const answer = questionDiv.querySelector('input[type="radio"]:checked').value;
+                    surveyAnswers.push({
+                        id_pertanyaan: questionId,
+                        jawaban: answer,
+                    });
+                });
+
+                // Kirim data responden dan jawaban ke backend
+                fetch('http://localhost:5000/submitSurvey', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        responden: { nama, jenis_kelamin, umur, posisi },
+                        jawaban: surveyAnswers,
+                    }),
+                })
+                    .then(response => {
+                        if (!response.ok) throw new Error(`Server returned ${response.status}`);
+                        alert("Survey berhasil disimpan.");
+                        resetSurvey();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan dalam pengiriman data');
+                    });
+            } else {
+                alert("Mohon jawab semua pertanyaan survei sebelum submit.");
+            }
+        }
+        // Function untuk validasi Data Diri
+        function validateForm() {
+            let form = document.getElementById("data-diri-form");
+            if (form.checkValidity()) {
+                return true;
+            } else {
+                alert("Mohon lengkapi semua data diri sebelum melanjutkan.");
+                return false;
+            }
+        }
+
+        // Function untuk validasi pertanyaan survey
+        function validateSurvey() {
+            let questions = document.querySelectorAll('.quiz-box');
+            for (let question of questions) {
+                let answered = question.querySelector('input[type="radio"]:checked');
+                if (!answered) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Function untuk mereset survey
+        function resetSurvey() {
+            document.getElementById("data-diri-form").reset();
+            document.getElementById("surveyForm").reset();
+            document.getElementById("survey-page").style.display = "none";
+            document.querySelector(".penilaian-content").style.display = "block";
+        }
+
+        // Placeholder function untuk menyimpan setiap perubahan jawaban
+        function saver(questionNumber, answerValue) {
+            console.log("Question:", questionNumber, "Answer:", answerValue);
+        }
+    </script>
+
+</body>
+
+</html>

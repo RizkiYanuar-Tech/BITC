@@ -1,0 +1,220 @@
+/* ----- Header Hero ----- */
+header .hero {
+  display: flex;
+  min-height: 600px;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../public/images/heros/technopark.png");
+}
+
+header .hero .heroContainer {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+header .hero .heroContainer .heroTitle {
+  color: var(--white);
+  font-weight: 550;
+  font-size: 3rem;
+  text-align: center;
+}
+
+header .hero .heroContainer .heroDescription {
+  color: var(--white);
+  margin-top: 15px;
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+/* ----- Header ----- */
+header {
+  min-height: 56px;
+  transition: min-height 0.3s;
+  background-color: transparent;
+}
+
+header .navbar {
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  z-index: 999;
+  transition: background-color 0.5s ease-in-out;
+}
+
+header .headerInner {
+  display: flex;
+  justify-content: space-between; 
+  padding: 0 20px;
+  width: 100%; 
+  align-items: center;
+}
+
+
+header .headerInner .headerTitle {
+  font-size: 1.6rem;
+  color: var(--white);
+  text-align: left;
+}
+
+/* ----- Hamburger Button ----- */
+header .headerInner .navigationResponsive .navigationDrawer {
+  font-size: 31px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* ----- Navbar List -----*/
+header .navbar .navbarContainer {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+header .navbarContainer .navbarList {
+  display: flex;
+  width: 90%;
+  padding: 0px;
+  margin: 15px;
+  text-align: center;
+  justify-items: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .navbarContainer .navbarList .navbarItem {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+header .navbarContainer .navbarList .navbarItem a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--white);
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+header .navbarContainer .navbarList .navbarItem a:hover {
+  transform: scale(1.2);
+}
+
+header .navbarContainer .navbarList .navbarItem button {
+  padding: 10px 15px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: var(--second-blue);
+  border-radius: 12px;
+  background-color: var(--white);
+}
+
+header .navbarContainer .navbarList .navbarItem button:hover {
+  color: var(--white);
+  background-color: var(--primary-blue);
+}
+
+/* Dropdown Styling */
+.navbarItem.dropdown {
+  position: relative;
+}
+
+/* Styling for the dropdown menu */
+.navbarItem .dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: rgb(53, 114, 239); /* Sesuaikan warna latar belakang */
+  min-width: 180px; /* Lebih besar untuk ruang lebih luas */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+  border-radius: 10px; /* Beri sudut melengkung */
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  padding: 10px 0;
+  opacity: 0; /* Tambahkan transisi halus */
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Styling for individual dropdown items */
+.navbarItem .dropdown-menu li {
+  padding: 10px 20px; /* Ruang tambahan untuk kenyamanan */
+  text-align: left;
+  position: relative; /* Tambahkan posisi relatif untuk bulatan */
+  list-style: none; /* Hapus bulatan list */
+}
+
+.navbarItem .dropdown-menu li::before {
+  content: '';
+  position: absolute;
+  left: -20px; /* Sesuaikan posisi bulatan */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: var(--white); /* Warna bulatan */
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.navbarItem .dropdown-menu li:hover::before {
+  transform: translateY(-50%) scale(1.2); /* Efek zoom saat hover */
+  background-color: var(--second-blue); /* Warna bulatan saat hover */
+}
+
+.navbarItem .dropdown-menu li a {
+  color: var(--white); /* Warna teks */
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  font-weight: 600; /* Buat teks lebih tebal */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 8px; /* Sudut melengkung pada item dropdown */
+}
+
+.navbarItem .dropdown-menu li a:hover {
+  background-color: var(--second-blue); /* Warna hover */
+  color: var(--white);
+}
+
+/* Show the dropdown when hovering over the Complaints item */
+.navbarItem.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1; /* Efek fade-in */
+  transform: translateY(0); /* Transisi masuk halus dari atas */
+}
+
+/* Navbar Item Styling */
+.navbarItem .dropdown-toggle {
+  color: var(--white); /* Warna teks default untuk Complaints */
+  padding: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbarItem .dropdown-toggle:hover {
+  transform: scale(1.1); /* Sedikit efek zoom saat hover pada Complaints */
+}

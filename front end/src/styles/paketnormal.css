@@ -1,0 +1,151 @@
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  color: #333;
+}
+.hero {
+  background: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+  margin-bottom: 40px;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 1.2rem;
+}
+.content-box {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.img-container {
+  text-align: center;
+  margin: 20px 0;
+}
+.img-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.content-box {
+  margin: 0px;
+  margin-left: 300px;
+}
+
+.text-center {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.group {
+  border: 2px solid #007bff; /* Warna hijau */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.category-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #007bff; /* Warna biru */
+}
+
+.fa-ul li {
+  line-height: 1.6;
+}
+
+.fa-ul li i {
+  color: #28a745; /* Warna untuk ikon centang */
+}
+
+.fa-ul li i.fa-minus-square {
+  color: #dc3545; /* Warna merah untuk fitur tidak aktif */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  width: 48%;
+  margin: 1%;
+}
+/* Tombol Pesan Sekarang */
+.pesan-sekarang {
+  background-color: #007bff; /* Warna biru */
+  color: #fff; /* Teks putih */
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+}
+
+.pesan-sekarang:hover {
+  background-color: #1578e2; /* Warna biru tua saat hover */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3); /* Bayangan lebih besar */
+  transform: translateY(-3px); /* Efek naik sedikit */
+}
+
+/* Tombol Responsif */
+.btn {
+  width: auto;
+  max-width: 100%;
+  text-align: center;
+}
+
+.w-95 {
+  width: 95%;
+  margin: 7px auto; /* Memberikan spasi antar tombol */
+}
+.detail-tipe-section {
+  text-align: center;
+  padding: 20px;
+}
+
+.detail-tipe-image {
+  max-width: 30%;
+  height: auto;
+  margin-bottom: 5%;
+  border-radius: 5%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detail-tipe-content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #007bff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #007bff;
+}

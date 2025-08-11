@@ -1,0 +1,356 @@
+.custom-padding {
+  padding-left: 4.5rem;
+}
+
+.content-box {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  padding: 20px;
+}
+
+.content-box p {
+  text-align: justify;
+}
+
+.outside-box {
+  margin-top: -20px;
+  margin-left: -150px;
+}
+
+@media (max-width: 768px) {
+  .content-box {
+    margin-left: -135px;
+  }
+
+  .outside-box {
+    margin-left: -150px;
+    margin-top: 30px;
+  }
+}
+
+.card-benefit {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 100px;
+  width: auto;
+  height: 11rem;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.3s ease-in;
+}
+
+.card-benefit::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: orange;
+  transition: top 0.5s ease-in-out;
+}
+
+.card-benefit:hover::before {
+  top: 0;
+}
+
+.card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.card-body i {
+  font-size: 40px;
+  margin-top: 2rem;
+  color: orange;
+  transition: all 0.3s ease-in;
+}
+
+.card-benefit:hover .card-body i {
+  color: white;
+}
+
+.card-body .card-title {
+  margin-top: 1rem;
+  transition: all 0.3s ease-in;
+  color: #0c0000;
+}
+
+.card-benefit:hover .card-title {
+  color: white;
+}
+
+.card-body .card-text {
+  margin-top: 5px;
+  color: black;
+  font-weight: bold;
+}
+
+.card-benefit:hover .card-text {
+  color: whitesmoke;
+}
+
+.type h1 {
+  margin-top: -70px;
+  margin-bottom: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.fasilitas h1 {
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 2.5rem;
+  color: rgb(2, 1, 0);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-inner {
+  padding: 1em;
+}
+
+.type .office-item {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  height: 100%;
+  transition: all 0.3s ease-in;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.card-all {
+  margin: 0 15px;
+  max-height: 1000px;
+  height: 250px;
+  max-width: 1000px;
+  width: 600px;
+  border-radius: 50px;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  background-color: rgb(238, 238, 238);
+  transition: all 0.3s ease-in;
+}
+
+.card-all:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+.card-all .card-title {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #000000;
+}
+
+.card-all .card-text li {
+  margin: 1500px;
+  font-size: medium;
+  font-weight: lighter;
+}
+
+.card-all .card-text {
+  margin-top: 10px;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .card-all {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+
+.carousel-inner {
+  display: flex;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 6vh;
+  height: 6vh;
+  background-color: black;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-control-next:hover,
+.carousel-control-prev:hover {
+  background-color: #0c0000;
+}
+
+.type h1 {
+  margin-top: 0.1rem;
+}
+
+.type .office-item .benefit-card {
+  color: rgb(252, 163, 80);
+}
+
+.type .office-item h4 {
+  text-align: center;
+}
+
+.type .office-item:hover {
+  background-color: rgb(238, 238, 238);
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.office-item:hover .p-4 {
+  background-color: #ffa07a;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.type .office-item .p-4 {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.type .office-item p {
+  font-size: 13px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: inherit;
+}
+
+.type .office-item .price {
+  font-size: 18px;
+  font-weight: bold;
+  color: inherit;
+}
+
+.type .description p {
+  margin-bottom: 0;
+}
+
+.type .office-item .btn {
+  margin-bottom: 0.3rem;
+  margin-left: 0.5rem;
+}
+
+.type .office-item .pesan-sekarang {
+  margin-top: 1rem;
+  background-color: rgb(15, 31, 175);
+  border-color: rgb(0, 0, 241);
+  color: white;
+  width: 15rem;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.type .office-item .pesan-sekarang:hover {
+  background-color: white;
+  border-color: black;
+  color: black;
+  transform: scale(1.05);
+}
+
+.type .office-item .wa {
+  margin-top: 1rem;
+  background-color: rgb(13, 109, 13);
+  border-color: #0c0000;
+  color: white;
+  width: 15rem;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.type .office-item .wa:hover {
+  background-color: white;
+  border-color: green;
+  color: black;
+  transform: scale(1.05);
+}
+
+.category-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: black;
+  text-align: center;
+}
+
+.benefit-item ul.fa-ul {
+  color: rgb(31, 31, 31);
+  padding-left: 0;
+  list-style-type: none;
+  text-align: left;
+}
+
+.benefit-item ul.fa-ul li {
+  margin-left: 0;
+  padding-left: 0;
+  text-align: left;
+}
+
+.benefit-item ul.fa-ul .fa.fa-check-square {
+  color: green;
+}
+
+.benefit-item ul.fa-ul .fa.fa-minus-square {
+  color: red;
+}
+
+.benefit-item {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.benefit-item .p-4 {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.p-4 {
+  width: 100%;
+  border: none;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centers the icons and text */
+  text-align: center;
+  text-decoration: none;
+}
+
+.social-icons a i {
+  margin-right: 8px; /* Adds some space between the icon and the text */
+}
+
+footer .col-md-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer .col-md-4 h5,
+footer .col-md-4 p,
+.social-icons {
+  text-align: center;
+}

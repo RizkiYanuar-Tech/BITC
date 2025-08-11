@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>BITC</title>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GOLING (Go Healing)" />
+  <meta name="keywords" content="goling team" />
+
+  <!-- Icon -->
+  <link rel="icon" href="../images/logo1.png" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+  <!-- Symbols -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Skip-Link -->
+  <a href="#mainContent" class="skip-link">To the Content</a>
+
+  <!-- Header -->
+  <header>
+    <div id="navbarId" class="navbar">
+      <div class="headerInner">
+        <h1 class="headerTitle">
+          BITC
+        </h1>
+        <ul class="navigationResponsive">
+          <li>
+            <button id="navigationDrawerId" class="navigationDrawer" aria-label="Open navigation drawer">☰</button>
+          </li>
+        </ul>
+      </div>
+      <nav id="navbarContainerId" class="navbarContainer">
+        <ul class="navbarList">
+          <li class="navbarItem"><a href="./index.html">Home</a></li>
+          <li class="navbarItem"><a href="./details.html"> Survei Kepuasan</a></li>
+          <li class="navbarItem"><a href="./complaints.html">Complaints</a>
+          <li class="navbarItem"><a href="./bookingVoffice.html">Sewa Virtual Office</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="hero">
+      <div class="heroContainer">
+        <h1 class="heroTitle">Baros Information Technology</h1>
+        <h2 class="heroTitle">Creative</h2>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Add services section -->
+    <section class="services-section">
+      <h2 class="services-title">Layanan Pengelolaan Keluhan</h2>
+      <p class="services-description">
+        Kami menyediakan platform untuk memfasilitasi keluhan dan masukan Anda. Setiap laporan yang Anda sampaikan melalui <strong>Form Keluhan</strong> akan diterima dan ditindaklanjuti oleh tim kami untuk memastikan solusi yang cepat dan tepat.
+      </p>
+
+      <div class="facilities-info">
+        <h3>Jenis Fasilitas</h3>
+        <div class="facilities-types">
+          <div class="facility-card">
+            <h4>Sarana</h4>
+            <p>Mencakup peralatan, perlengkapan, dan fasilitas yang dapat dipindahkan, seperti:</p>
+            <ul>
+              <li>Meja dan kursi</li>
+              <li>Komputer dan printer</li>
+              <li>AC dan kipas angin</li>
+              <li>Peralatan kantor</li>
+              <li>Perlengkapan pendukung lainnya</li>
+            </ul>
+          </div>
+          <div class="facility-card">
+            <h4>Prasarana</h4>
+            <p>Mencakup fasilitas dasar atau infrastruktur tetap, seperti:</p>
+            <ul>
+              <li>Gedung dan ruangan</li>
+              <li>Instalasi listrik</li>
+              <li>Saluran air</li>
+              <li>Jaringan internet</li>
+              <li>Toilet dan fasilitas umum</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="complaint-section">
+      <form id="keluhanForm">
+        <h2>Complaints</h2>
+        <div>
+          <span>
+            <label for="name">Name</label><br />
+            <input name="name" id="name" type="text" placeholder="Full Name" autocomplete="name" required>
+            <span id="nameError" class="error"></span>
+          </span>
+          <span>
+            <label for="email">Email</label><br />
+            <input name="email" id="email" type="email" placeholder="Email" autocomplete="email" required>
+            <span id="emailError" class="error"></span>
+          </span>
+          <span>
+            <label for="categories">Categories</label><br />
+            <select name="categories" id="categories" required>
+              <option value="">Select Category</option>
+              <option value="pegawai">Pegawai</option>
+              <option value="tenant">Tenant</option>
+              <option value="tamu">Tamu</option>
+            </select>
+            <span id="categoriesError" class="error"></span>
+          </span>
+          <span id="tenantLocations" class="hidden">
+            <label for="locations">Tenant Location</label><br />
+            <select name="locations" id="locations">
+              <option value="">Select Location</option>
+              <option value="L1/R2">L1/R2</option>
+              <option value="L1/R3">L1/R3</option>
+              <option value="L2/R1">L2/R1</option>
+              <option value="L2/R.3">L2/R.3</option>
+              <option value="L2/R4">L2/R4</option>
+              <option value="L2/R8">L2/R8</option>
+              <option value="L3/R1">L3/R1</option>
+              <option value="L3/R3">L3/R3</option>
+              <option value="L3/R6 (R.SERVER)">L3/R6 (R.SERVER)</option>
+              <option value="L3/M2">L3/M2</option>
+              <option value="L3/M.3">L3/M.3</option>
+              <!-- Tambahkan lokasi sewa lainnya -->
+            </select>
+            <span id="locationsError" class="error"></span>
+          </span>
+          <span>
+            <label for="phone">Phone Number</label><br />
+            <input name="phone" id="phone" type="tel" placeholder="Phone Number" autocomplete="tel" required>
+            <span id="phoneError" class="error"></span>
+          </span>
+          <span>
+            <label for="facilities">Facilities Complaint</label><br />
+            <select name="facilities" id="facilities">
+              <option value="">Select Facility</option>
+              <option value="sarana" title="Sarana meliputi peralatan, perlengkapan, dan fasilitas yang dapat dipindahkan seperti meja, kursi, komputer, printer, AC, dll.">Sarana</option>
+              <option value="prasarana" title="Prasarana mencakup fasilitas dasar atau infrastruktur tetap seperti gedung, ruangan, listrik, air, jaringan internet, toilet, dll.">Prasarana</option>
+            </select>
+            <span id="facilitiesError" class="error"></span>
+          </span>
+          <span>
+            <label for="image">Upload Image</label><br />
+            <input name="image" id="image" type="file" accept="image/*">
+            <span id="imageError" class="error"></span>
+          </span>
+          <div id="imagePreview" style="display: none; border: 1px solid black; padding: 10px; border-radius: 10px;">
+            <img id="imagePreviewImg" src="" alt="Image Preview" style="max-width: 200px; max-height: 200px;">
+          </div>
+
+        </div>
+        <label for="message">Your Complaint</label><br />
+        <textarea name="message" id="message" rows="10" placeholder="Your Complaint" autocomplete="off"
+          required></textarea>
+        <span id="messageError" class="error"></span>
+        <button id="submitbutton" type="submit" disabled>Submit</button>
+      </form>
+    </div>
+  </main>
+
+    <!-- After the card-container div -->
+    <section class="about-section"></section>
+      <div class="about-container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Komitmen Layanan</h2>
+            <h3>Dedikasi Kami dalam Menanggapi Setiap Keluhan Anda</h3>
+            <p>Kami berkomitmen untuk memberikan respons profesional dan solutif bagi setiap keluhan yang Anda sampaikan melalui <strong>Form Keluhan</strong> kami. Tim kami siap mendukung Anda dengan layanan cepat, efektif, dan ramah untuk memastikan setiap masalah ditangani secara tuntas.</p>            
+          </div>
+          <div class="about-image">
+            <img src="./images/contact.png" alt="Team Illustration">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <!-- Wave on Footer -->
+  <section class="wave">
+    <div class="air air1"></div>
+    <div class="air air2"></div>
+    <div class="air air3"></div>
+    <div class="air air4"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="foot">
+      <div class="footer-content">
+
+        <div class="footlinks">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index.html#destinations">Tentang Kami</a></li>
+            <li><a href="./index.html#contact">Informasi</a></li>
+            <li><a href="./about.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footlinks">
+          <h4>Contact</h4>
+          <ul>
+            <li class="contact-item">
+              <a href="#" class="contact-link">Admin : (022) 86121025</a>
+            </li>
+            <li class="contact-item">
+              <a href="#" class="contact-link">Email : technopark@cimahikota.go.id</a>
+            </li>
+            <li class="contact-item">
+              <address>Jl. HMS Mintareja Sarjana Hukum, Baros, Kec. Cimahi Tengah, Kota Cimahi, Jawa Barat 40521
+              </address>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footlinks">
+          <h4>Social Media</h4>
+          <div class="social">
+            <a href="https://web.whatsapp.com/send?phone=6281223020029"
+              target="https://web.whatsapp.com/send?phone=6281223020029"><i class="bx bxl-whatsapp"></i></a>
+            <a href="https://www.facebook.com/technopark.cimahi/"
+              target="https://www.facebook.com/technopark.cimahi/"><i class="bx bxl-facebook"></i></a>
+            <a href="https://www.instagram.com/technopark.cimahi/"
+              target="https://www.instagram.com/technopark.cimahi/"><i class="bx bxl-instagram"></i></a>
+            <a href="https://x.com/i/flow/login?redirect_after_login=%2Fcimahitpark"
+              target="https://x.com/i/flow/login?redirect_after_login=%2Fcimahitpark"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.youtube.com/@cimahitechnopark4127"
+              target="https://www.youtube.com/@cimahitechnopark4127"><i class="bx bxl-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="end">
+      <p>BITC © 2024 All Rights Reserved</p>
+    </div>
+  </footer>
+  <script>
+    const imageInput = document.getElementById('image');
+    const imagePreviewContainer = document.getElementById('imagePreview');
+    const imagePreviewImg = document.getElementById('imagePreviewImg');
+    const categoriesDropdown = document.getElementById('categories');
+    const tenantLocationsDropdown = document.getElementById('tenantLocations');
+
+    // Menampilkan pratinjau gambar
+    imageInput.addEventListener('change', function () {
+      imagePreviewContainer.style.display = 'block';
+      imagePreviewImg.src = URL.createObjectURL(imageInput.files[0]);
+    });
+
+    // Menampilkan dropdown lokasi jika "tenant" dipilih
+    categoriesDropdown.addEventListener('change', function () {
+      if (this.value === 'tenant') {
+        tenantLocationsDropdown.classList.remove('hidden');
+      } else {
+        tenantLocationsDropdown.classList.add('hidden');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('keluhanForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+
+        // Gabungkan kategori dan lokasi jika kategori adalah tenant
+        let categoryData = categoriesDropdown.value;
+        if (categoryData === 'tenant') {
+          const location = document.getElementById('locations').value;
+          categoryData = `Tenant - ${location}`;
+        }
+
+        // Menambahkan semua data form
+        formData.append("name", document.getElementById("name").value);
+        formData.append("categories", categoryData);  // Ubah categories menjadi categoryData
+        formData.append("phone", document.getElementById("phone").value);
+        formData.append("facilities", document.getElementById("facilities").value);
+        formData.append("isikeluhan", document.getElementById("message").value);
+        formData.append("email", document.getElementById("email").value);
+
+        // Tambahkan file image jika ada
+        const imageInput = document.getElementById("image");
+        if (imageInput.files[0]) {
+          formData.append("image", imageInput.files[0]);
+        }
+
+        try {
+          const response = await fetch('http://localhost:5000/createComplaints', {
+            method: 'POST',
+            body: formData // Kirim FormData secara langsung
+          });
+
+          const result = await response.json();
+          if (response.ok) {
+            alert(result.message); // Tampilkan pesan sukses
+          } else {
+            alert('Error: ' + result.message); // Tampilkan pesan error
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      });
+    });
+  </script>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
