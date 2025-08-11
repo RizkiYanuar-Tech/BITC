@@ -5,8 +5,8 @@ const { sendRoomMeetingConfirmation } = require('../controller/mailer');
 
 let snap = new midtransclient.Snap({
     isProduction: false,
-    serverKey: '',
-    clientKey: '',
+    serverKey: 'SB-Mid-server-MTHm3X1sj8GTjVosdKR-T7gg',
+    clientKey: 'SB-Mid-client-WRrnBAPxArMioHRQ',
 });
 
 const createMidtransTransactionMeeting = async (req, res) => {

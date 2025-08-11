@@ -1699,7 +1699,7 @@ app.put("/updateBooking", async (req, res, next) => {
   };
 });
 
-cron.schedule('*/10 * * * *', async () => {
+cron.schedule('0 */2 * * * *', async () => {
   const indonesia = moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss");
   console.log(`Tugas Update Sewa VO berjalan pada jam ${indonesia} (WIB)`);
 
@@ -1850,7 +1850,7 @@ app.delete("/deleteOrderMeeting/:ID_Transaksi", async(req, res, next) => {
   }
 });
 
-cron.schedule('*/5 * * * *', async () => {
+cron.schedule('0 */2 * * * *', async () => {
   const indonesia = moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss");
   console.log(`Tugas Update Booking Rapat berjalan pada jam ${indonesia} (WIB)`);
 
